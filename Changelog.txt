@@ -1,0 +1,53 @@
+----------------------------------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+----------------------------------------------------------------------------------------------
+//
+// Bombrush V1.1.2 by Whistle [Ghost Cows]
+//
+//
+----------------------------------------------------------------------------------------------
+//////////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+----------------------------------------------------------------------------------------------
+
+---------
+Changelog
+---------
+
+v1.2.5:
+Added ACE3 including medical system, and other systems
+Removed FAROOQ's
+Further tweaks on the spawn system for both terrorists and the bomb
+
+v1.2.4:
+Added a vehicle spawner which you have to pay money to get a vehicle/helicopter
+
+V1.1.2:
+Update FAROOQ'S
+Edited something with the timer
+Made GUI for timer
+
+
+V1.1.1:
+Put all functions in one file, so everything is easier to port to other islands.
+Arranged params for easier port.
+Added a line that checks whether to use UPS or Garrison script
+Added 	zoriya's Garrison script 
+Updated UPS
+Added function for terrorist gear made by Spliffz
+Fixed JIP issues
+Added that only explosive expert can disarm without chance of explode. When other try they have a chance of defusal but also the chance the bomb explodes
+Fixed MPHit eventhandler on bomb
+Added Garbage Collector
+Fixed Vehicle Servicing
+Nikos can now give you intel
+Added a telephone pole with actions. You can now call Nikos to get intel about the enemy position, or you can pay the terrorrists so they will defuse the bomb once
+
+
+V1.1: 
+Added MPHit to bomb 
+Added new random weather script that actually works with ArmA 3
+Added 
+
+V1: initial release
