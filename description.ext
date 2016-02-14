@@ -1,0 +1,112 @@
+//
+// Description .ext 
+// Bombrush v1.1.2 by Whistle
+//
+
+
+disabledAI = true;
+
+class Header
+{
+ gameType = COOP; 
+ minPlayers = 1;  
+ maxPlayers = 11; 
+};
+
+respawn = "BASE";
+respawnDelay = 15;
+respawnDialog = true;
+enableDebugConsole = 1;//Only Admins and in SP
+disableai = 1;
+ 
+author="Whistle";
+OnLoadName = "Bombrush";
+OnLoadMission = "Either defuse the bombs, or take out the OPFOR leader to complete this mission";
+overviewText = "Bombrush";
+overviewPicture = "[m000]_Bombrush.jpg";
+loadScreen = "[m000]_Bombrush.jpg";
+
+class Params {
+	#include "Files\Bombrush\params.sqf"
+};
+
+class CfgSounds
+{
+	sounds[] = { Plantedbomb, Nikos};
+
+	// Definition for each sound
+	class Plantedbomb
+	{
+		name = "Plantedbomb"; // Name for mission editor
+		sound[] = {Files\sounds\Plantedbomb.ogg, db + 60, 1.0};
+		titles[] = {0, ""};
+	};
+	class Nikos
+	{
+		name = "Nikos"; // Name for mission editor
+		sound[] = {Files\sounds\Nikos.ogg, db + 60, 1.0};
+		titles[] = {0, ""};
+	};
+};
+
+class RscTitles
+{
+	class BOMB_RUSH_UI
+	{
+	idd = 17777;
+	duration = 1.0e+11; // -1 & 0 not unlimited 999999999999999999
+	movingEnable = 0;
+	enableSimulation = 1;
+	name = "BOMB_RUSH_GUI";
+	onLoad = "uiNamespace setVariable ['BOMB_RUSH_GUI', _this select 0]";
+	controlsBackground[] = {};
+	objects[] = {};
+	class controls
+		{
+			class Whistle_Timer_GUI
+			{
+				idc = 17770;
+				type = 0;
+				style = 1;
+				x = 0.927969 * safezoneW + safezoneX;
+				y = 0.159 * safezoneH + safezoneY;
+				w = 0.0567187 * safezoneW;
+				h = 0.033 * safezoneH;
+				font="PuristaMedium";
+				sizeEx = 0.05;
+				colorBackground[] = {0,0,0,0};
+				colorText[] = {1,1,1,1};
+				text = "";
+			};	
+		};
+	}
+	class Whistle_Timer_PAA
+	{
+	idd = 18777;
+	duration = 1.0e+11; // -1 & 0 not unlimited 999999999999999999
+	movingEnable = 0;
+	enableSimulation = 1;
+	name = "Whistle_Timer_Sign";
+	onLoad = "uiNamespace setVariable ['Whistle_Timer_Sign', _this select 0]";
+	controlsBackground[] = {};
+	objects[] = {};
+	class controls
+		{
+			class Whistle_Timer_LOGO
+			{
+			idc = 18770;
+			type = 0;
+			style = 2096;
+			x = 0.895 * safezoneW + safezoneX;//x = 0.866094 * safezoneW + safezoneX;
+			y = 0.148 * safezoneH + safezoneY;//y = 0.148 * safezoneH + safezoneY;
+			w = 0.0515625 * safezoneW;
+			h = 0.066 * safezoneH;
+			font="PuristaMedium";
+			sizeEx = 0.05;
+			colorBackground[] = {};
+			colorText[] = {1,1,0,0.5};
+			text = "files\sounds\sign.paa";
+			};
+		};
+	};
+};
