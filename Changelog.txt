@@ -12,6 +12,13 @@
 ----------------------------------------------------------------------------------------------
 
 ---------
+Todo list
+---------
+Add other ACE modules
+Verify if all scripts are still up to date
+Add Task Force Radio modules
+
+---------
 Changelog
 ---------
 
