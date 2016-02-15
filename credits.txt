@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 //
-// Bombrush v1.1.2
+// Bombrush v1.2.5
 // by Whistle
 // Credits
 // 
@@ -11,7 +11,6 @@
 * FAROOQ
 * EGG_EVO
 * T-800a
-* Tajin
 * Kronzky
 * Zorilya
 * D4nny
