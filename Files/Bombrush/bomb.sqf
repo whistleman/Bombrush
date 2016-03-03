@@ -95,6 +95,11 @@ _mrk setMarkerType "hd_dot";
 _mrk setmarkercolor "ColorRed";
 "Bomb" setMarkeralpha 0;
 
+if (getMarkerColor "Oldpos" == "") then {
+	_oldpos = createmarker ["Oldpos", getpos Whistle_Bomb];
+	_oldpos setmarkeralpha 0;
+} else {};
+
 _bombpatrolmrk = createmarker ["bombpatrol", _newpos];
 _bombpatrolmrk setMarkerShape "ELLIPSE";
 _bombpatrolmrk setMarkerSize [100, 100];
@@ -117,10 +122,14 @@ diag_log format ["#*# Bombrush #*# Amount of bombs is %1", Whistle_Bombs_amount]
 
 sleep _intervaltime;
 
+/*
 if ((Whistle_Bombs_amount > 15) && (Whistle_Bombs_amount < 20) || (Whistle_Bombs_amount > 20)) then {Whistle_n = 2;};
 if ((Whistle_Bombs_amount > 10) && (Whistle_Bombs_amount < 16)) then {Whistle_n = 3;};
 if ((Whistle_Bombs_amount > 5) && (Whistle_Bombs_amount < 11)) then {Whistle_n = 4;};
 if ((Whistle_Bombs_amount > 0) && (Whistle_Bombs_amount < 6)) then {Whistle_n = 5;};
+*/
+
+Whistle_n = paramsarray select 12;
 
 diag_log format ["#*# Bombrush #*# Amount of bombs is %1", Whistle_Bombs_amount];
 diag_log format ["#*# Bombrush #*# Whistle_n is %1", Whistle_n];

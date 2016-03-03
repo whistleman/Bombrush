@@ -1,6 +1,6 @@
 //
 // Description .ext 
-// Bombrush v1.1.2 by Whistle
+// Bombrush v1.2.6 by Whistle
 //
 
 
@@ -20,9 +20,9 @@ enableDebugConsole = 1;//Only Admins and in SP
 disableai = 1;
  
 author="Whistle";
-OnLoadName = "Bombrush";
+OnLoadName = "Bombrush v1.2.6";
 OnLoadMission = "Either defuse the bombs, or take out the OPFOR leader to complete this mission";
-overviewText = "Bombrush";
+overviewText = "Bombrush v1.2.6";
 overviewPicture = "[m000]_Bombrush.jpg";
 loadScreen = "[m000]_Bombrush.jpg";
 

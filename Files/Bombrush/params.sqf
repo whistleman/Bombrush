@@ -83,3 +83,10 @@
 		texts[] = {"Everyone", "Only explosive experts"};
 		default = 1;
 		};
+	class AmntEnemies // select12v
+		{
+		title = "How many resitance will be in the zone protecting the bomb?";
+		values[] = {2, 3, 5, 7, 9};
+		texts[] = {"Some", "Normal", "Doable", "A lot", "Impossible"};
+		default = 3;
+		};	

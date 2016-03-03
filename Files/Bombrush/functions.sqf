@@ -7,6 +7,8 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////
 
+diag_log "functions is loaded";
+
 spliffz_fnc_makeArrayFromGroup = {
 		_grp = _this select 0;
 		_array = [];
@@ -66,9 +68,19 @@ fnc_Whistle_delete_all = {
 	_explode 	= _this select 1;
 	_sleepertt  = _this select 2;
 	_defuse		= _this select 3;
-	if (_explode == 1) then {[Whistle_Bomb] call fnc_Whistle_explode;};
-	if (_defuse == 1) then {Whistle_Money_amount = Whistle_Money_amount + 2};
+	if (_explode == 1) then {
+		[Whistle_Bomb] call fnc_Whistle_explode; 
+		WIS_task_fetch_fail = WIS_task_fetch_fail + 1;
+		publicvariable "WIS_task_fetch_fail";
+	};
+	if (_defuse == 1) then {
+		Whistle_Money_amount = Whistle_Money_amount + 2; 	
+		WIS_task_fetch	= WIS_task_fetch + 1;
+		publicvariable "WIS_task_fetch";
+	};
+	publicvariable "Whistle_Money_Amount";
 	Whistle_INIT_TIMER = false;
+	"Oldpos" setMarkerPos getpos Whistle_Bomb;
 	deletevehicle Whistle_Bomb;
 	deletemarker "bombpatrol";
 	deletemarker "Bomb";
@@ -77,10 +89,12 @@ fnc_Whistle_delete_all = {
 	deletemarker "Centerpos";
 	sleep 1;
 	END_TIME = 0;
-	WIS_task_fetch	= WIS_task_fetch + 1;
-	publicvariable "WIS_task_fetch";
 	if (_sleepertt > 0) then {sleep _sleepertt;};
 	[] spawn fnc_make_new_bomb;
+	[] spawn WIS_fnc_enemy_replacement;
+	} else {
+	sleep 5;
+	[0,player] call fnc_check_bankaccount;
 	};
 };
 
@@ -88,6 +102,7 @@ fnc_Whistle_delete_all_MP = {
 	IF (ISSERVER) THEN {
 	[Whistle_Bomb] call fnc_Whistle_explode;
 	Whistle_INIT_TIMER = false;
+	"Oldpos" setMarkerPos getpos Whistle_Bomb;
 	deletevehicle Whistle_Bomb;
 	deletemarker "bombpatrol";
 	deletemarker "Bomb";
@@ -252,8 +267,9 @@ fnc_call_Nikos = {
 };
 
 fnc_intel_Nikos = {
-if (getMarkerColor "Intel" == "") then {} else {deletemarker "Intel"; deletemarker "intelpatrol"; };
+
 if (isServer) then {
+	//if (getMarkerColor "Intel" == "") then {} else {deletemarker "Intel"; deletemarker "intelpatrol"; };
 	if (Whistle_Money_amount >= 5) then {
 		Whistle_Money_amount = Whistle_Money_amount - 5;
 		publicvariable "Whistle_Money_amount";
@@ -266,6 +282,13 @@ if (isServer) then {
 				_intelmrk = createmarker ["Intel", _newpos];
 				_intelmrk setMarkerType "hd_objective";
 				_intelmrk setmarkercolor "ColorRed";
+				_now 	= date;
+				_day 	= _now select 2;
+				_month 	= _now select 1;
+				_year 	= _now select 0;
+				_hour 	= _now select 3;
+				_minute = _now select 4;
+				_intelmrk setMarkerText format ["Intel Nikos %1-%2-%3 time: %4:%5", _day, _month, _year, _hour, _minute];
 				"Intel" setMarkeralpha 1;
 
 				_intelpatrolmrk = createmarker ["intelpatrol", _newpos];
@@ -418,4 +441,20 @@ KK_fnc_inString = {
         _hay = _hay - ["x"]
     };
     _found
+};
+
+WIS_fnc_enemy_replacement = {
+	sleep 120;
+	{
+		if (
+				alive _x 
+				&& side _x == EAST 
+				&& ((_x distance2d (getMarkerPos "Intel")) > 350)
+				&& ((_x distance2d (getMarkerPos "camp")) > 250)
+				&& ((_x distance2d Whistle_bomb) > 2000)
+				&& ((_x distance2d (getmarkerpos "Oldpos")) > 2000)
+			) then {
+			_x setpos (getpos Whistle_bomb);
+		} else {};
+	} foreach allunits;
 };

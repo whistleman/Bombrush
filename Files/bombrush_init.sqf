@@ -15,7 +15,7 @@ player createDiaryRecord ["Diary", ["Hints", "The more enemy units you leave on 
 player createDiaryRecord ["Diary", ["Logistics", "There are three Hunters, two Hummingbirds, a UH-80 Ghost Hawk and a MQ4A Greyhawk at your disposal. Use them wisely."]];
 player createDiaryRecord ["Diary", ["Situation", "Terorrists have been hiding on Altis for quite some time now. They are planning an attack of some kind, but we do not know when are what they have planned. Just when you arrive back at base, your phone rings..."]];
 
-call compileFinal preprocessFileLineNumbers "Files\Bombrush\functions.sqf";
+call compile preprocessFileLineNumbers "Files\Bombrush\functions.sqf";
 call compile preprocessFileLineNumbers "Files\AI\spliffz_terroristCreator.sqf";
 
 // Pre-recuisit for Spliffz_terroristcreator
@@ -54,6 +54,7 @@ END_TIME = END_TIME;
 ELAPSED_TIME = ELAPSED_TIME;
 Whistle_Areamarker = Whistle_Areamarker;
 Whistle_Money_amount = Whistle_Money_amount;
+Whistle_centerpos = Whistle_centerpos;
 [PLAYER] call WIS_fnc_createtask;
 };
 

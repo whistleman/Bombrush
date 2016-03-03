@@ -18,6 +18,10 @@ WIS_task_fetch	= 0;
 	[task1, "Succeeded"] call WIS_fnc_taskstate;
 };
 
+"WIS_task_fetch_fail" addPublicVariableEventHandler {
+	[task1, "Failed"] call WIS_fnc_taskstate;
+};
+
 if (!isServer) exitwith {};
 
 _locations 		= nearestLocations [(getmarkerpos "Respawn_west"), ["NameLocal"],30000];
