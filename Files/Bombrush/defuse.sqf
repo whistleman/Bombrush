@@ -29,22 +29,22 @@ if ((_caller distance _bomb) < 2) then {
 
 	if (Whistle_INIT_defuse) then {
 		if (typeof _caller in _engineers) then {
-			[[_bomb, 0, 30, 1], "fnc_Whistle_delete_all", true, true] spawn BIS_fnc_MP; 
-			Whistle_INIT_defuse = false; 
-			publicvariable "Whistle_INIT_defuse"; 
-			_bomb removeaction _id;
+				[_bomb, 0, 30] remoteExec [ "BR_fnc_DeleteAll", 0, true]; 
+				Whistle_INIT_defuse = false; 
+				publicvariable "Whistle_INIT_defuse"; 
+				_bomb removeaction _id;
 			} else {
 				if ((random (1)) > 0.5) then {
-					[[_bomb, 1, 30, 0], "fnc_Whistle_delete_all", true, true] spawn BIS_fnc_MP;
+					[_bomb, 1, 30] remoteExec ["BR_fnc_DeleteAll", 0, true];
 					Whistle_INIT_defuse = false; 
 					publicvariable "Whistle_INIT_defuse"; 
 					_bomb removeaction _id;
-					} else {
-					[[_bomb, 0, 30, 1], "fnc_Whistle_delete_all", true, true] spawn BIS_fnc_MP;
+				} else {
+					[_bomb, 0, 30] remoteExec ["BR_fnc_DeleteAll", 0, true];
 					Whistle_INIT_defuse = false; 
 					publicvariable "Whistle_INIT_defuse"; 
 					_bomb removeaction _id;				
-					};
+				};
 			};
 	} else {
 		player globalchat "Defusal cancelled";

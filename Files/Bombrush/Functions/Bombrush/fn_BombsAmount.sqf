@@ -1,0 +1,1 @@
+BR_Bombs_amount = BR_Bombs_amount - 1;

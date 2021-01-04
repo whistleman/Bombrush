@@ -1,0 +1,57 @@
+bombrush issues
+
+====================================================================================================================================
+* CQC AI Does not work correctly?
+====================================================================================================================================
+17:55:35 Error in expression <;
+
+
+
+if (_camo > 0.6) then 
+{
+_cansee = _formula;
+};
+};
+
+
+};
+
+}; 
+if (_cansee > >
+17:55:35   Error position: <_formula;
+};
+};
+
+
+};
+
+}; 
+if (_cansee > >
+17:55:35   Error Undefined variable in expression: _formula
+17:55:35 File C:\Users\Jacco\Documents\Arma 3 - Other Profiles\Whistleman\mpmissions\Overige\Bombrush\Bombrush%20v1%2e2%2e6%20clean.Altis\Files\AI\CQC_fncs\CQC_AI_Vision.sqf..., line 109
+17:55:35 Error in expression <lightDist) * 2;
+};
+
+
+_formula = (_vm * (sunAngle)) + _litValue + ((_stance * _es>
+17:55:35   Error position: <sunAngle)) + _litValue + ((_stance * _es>
+17:55:35   Error Undefined variable in expression: sunangle
+17:55:35 File C:\Users\Jacco\Documents\Arma 3 - Other Profiles\Whistleman\mpmissions\Overige\Bombrush\Bombrush%20v1%2e2%2e6%20clean.Altis\Files\AI\CQC_fncs\CQC_AI_Vision.sqf..., line 103
+17:55:35 Error in expression <_cansee = _formula;
+};
+};
+
+
+};
+
+}; 
+if (_cansee > 0) exitwith  
+
+{ 
+[_unit,(getP>
+17:55:35   Error position: <_cansee > 0) exitwith  
+
+{ 
+[_unit,(getP>
+17:55:35   Error Undefined variable in expression: _cansee
+17:55:35 File C:\Users\Jacco\Documents\Arma 3 - Other Profiles\Whistleman\mpmissions\Overige\Bombrush\Bombrush%20v1%2e2%2e6%20clean.Altis\Files\AI\CQC_fncs\CQC_AI_Vision.sqf..., line 117

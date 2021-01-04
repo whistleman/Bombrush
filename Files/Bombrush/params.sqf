@@ -83,3 +83,17 @@
 		texts[] = {"Everyone", "Only explosive experts"};
 		default = 1;
 		};
+	class AmntEnemies // select12v
+		{
+		title = "How many resitance will be in the zone protecting the bomb?";
+		values[] = {2, 3, 5, 7, 9};
+		texts[] = {"Some", "Normal", "Doable", "A lot", "Impossible"};
+		default = 3;
+		};	
+	class AreaSize // select 13
+		{
+			title = "How big is the area of operations?";
+			values[] = {2000, 5000, 10000, 80000};
+			texts[] = {"Small (2 km)","Medium (5 km)","Large (10 km)","Whole map"};
+			default =  5000;
+		};

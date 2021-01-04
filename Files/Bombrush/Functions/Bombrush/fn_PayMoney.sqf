@@ -1,0 +1,1 @@
+"[]" remoteExec  ["BR_fnc_MoneyPaid", 0, true];

@@ -1,6 +1,6 @@
 //
 // Description .ext 
-// Bombrush v1.1.2 by Whistle
+// Bombrush v1.2.6 by Whistle
 //
 
 
@@ -13,16 +13,15 @@ class Header
  maxPlayers = 11; 
 };
 
-respawn = "BASE";
+respawn = 3;
 respawnDelay = 15;
-respawnDialog = true;
 enableDebugConsole = 1;//Only Admins and in SP
 disableai = 1;
  
 author="Whistle";
-OnLoadName = "Bombrush";
+OnLoadName = "Bombrush v1.2.6";
 OnLoadMission = "Either defuse the bombs, or take out the OPFOR leader to complete this mission";
-overviewText = "Bombrush";
+overviewText = "Bombrush v1.2.6";
 overviewPicture = "[m000]_Bombrush.jpg";
 loadScreen = "[m000]_Bombrush.jpg";
 
@@ -46,6 +45,74 @@ class CfgSounds
 		name = "Nikos"; // Name for mission editor
 		sound[] = {Files\sounds\Nikos.ogg, db + 60, 1.0};
 		titles[] = {0, ""};
+	};
+	class Paymoney
+	{
+		name = "Paymoney"; // Name for mission editor
+		sound[] = {Files\sounds\ThanksForTheMoney.ogg, db + 60, 1.0};
+		titles[] = {0, ""};
+	};
+};
+
+class cfgFunctions
+{
+	class BR
+	{
+		class Bombrush
+		{
+			file = "Files\Bombrush\Functions\Bombrush";
+			class BombExplode {};
+			class BombsAmount {};
+			class CallNikos {};
+			class CheckBankaccount {};
+			class CheckInsideArea {};
+			class CreateTask {};
+			class CreateUnits {};
+			class DeleteAll {};
+			class DetonatedBombsAllowed {};
+			class EndMission {};
+			class EnemyReplacement {};
+			class GetMaxArea {};
+			class InitJIP {};
+			class IntelNikos {};
+			class MakeNewBomb {};
+			class MoneyPaid {};
+			class MoneyPaidHint {};
+			class PayMoney {};
+			class Playsound {};
+			class TaskState {};
+		};
+	};
+	class spliffz
+	{
+		class None 
+		{
+			file = "Files\Bombrush\Functions\spliffz";
+			class makeArrayFromGroup {};
+			class BuildingPos {};
+		};
+	};
+	class EGG 
+	{
+		class skill {
+			file = "Files\Bombrush\Functions\EVO";
+			class EVO_skill {};
+		};
+	};
+	class T8 
+	{
+		class addactionfunctions {
+			file = "Files\Bombrush\Functions\T8";
+			class addActionBomb {};
+			class addActionsTelephone {};
+		};
+	};
+	class KK 
+	{
+		class inString {
+			file = "Files\Bombrush\Functions\KK";
+			class inString {};
+		};
 	};
 };
 

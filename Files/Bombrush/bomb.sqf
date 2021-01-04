@@ -6,9 +6,6 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-
-_intervaltime = 5;
-
 if (!isServer) exitwith {};
 
 _bombspawn = createMarker ["Bombspawn", [0,0,0]];
@@ -20,7 +17,8 @@ diag_log format ["#*# Bombrush #*# Bomb is made"];
 _pos = getPosATL Whistle_bomb;
 
 //Get an array of all the towns and select one at random
-_townlist = nearestLocations [getpos Whistle_bomb, ["NameCityCapital","NameCity","NameVillage"],80000];
+_areaSize = paramsarray select 13;
+_townlist = nearestLocations [getmarkerpos "respawn_west", ["NameCityCapital","NameCity","NameVillage"],_areaSize];
 
 //Get town from array
 _rnd = floor random (count _townlist);
@@ -55,7 +53,7 @@ IF(count _nobjs == 0) then {
 	_isenterable = [_nobj] call BIS_fnc_isBuildingEnterable;
 	_nobjdamage = damage _nobj;
 	IF (_isenterable && (_nobjdamage < 0.1)) then {
-		_buildingposition = [_nobj] call Spliffz_fnc_buildingpos;
+		_buildingposition = [_nobj] call spliffz_fnc_buildingpos;
 		diag_log format ["#*# Bombrush #*# Buildingpos is %1", _buildingposition];
 		Whistle_bomb setpos (_nobj buildingpos _buildingposition);
 		diag_log format ["#*# Bombrush #*# Pos Bomb is try 1 %1", getpos Whistle_bomb];
@@ -65,35 +63,20 @@ IF(count _nobjs == 0) then {
 		Whistle_bomb setposATL [_randompos select 0, _randompos select 1, 0];
 	};
 };
-	
-	
-/*
-if (_nobj select 0 iskindof "house") then {
-	_nobjdamage = getDammage (_nobj select 0);
-	if (_nobjdamage < 0.3) then {
-		[Whistle_bomb] call Tajin_fnc_buildingpos;
-		diag_log format ["#*# Bombrush #*# Pos Bomb is Tajin try 1 %1", getpos Whistle_bomb];
-		if ((Whistle_bomb distance [0,0,0]) < 30) then {
-			Whistle_bomb setPosATL _locationPos;
-			diag_log format ["#*# Bombrush #*# Pos Bomb is back to default %1", getpos Whistle_bomb];
-		};
-	//}
-	//else {
-	//_randompos = [((_newpos select 0) + (random (20)), ((_newpos select 1) + (random (20)), _newpos select 2];
-	//Whistle_bomb setposATL _randompos;
-	};
-};
-*/
 
 diag_log format ["#*# Bombrush #*# Pos Bomb is after Buildpos %1", getpos Whistle_bomb];
 
-sleep 2;
-[Whistle_bomb ,"T8_fnc_addActionBomb", true, true] spawn BIS_fnc_MP;
+Whistle_bomb remoteExec ["T8_fnc_addActionBomb", 0, true];
 
 _mrk = createMarker ["Bomb", _newpos];
 _mrk setMarkerType "hd_dot";
 _mrk setmarkercolor "ColorRed";
 "Bomb" setMarkeralpha 0;
+
+if (getMarkerColor "Oldpos" == "") then {
+	_oldpos = createmarker ["Oldpos", getpos Whistle_Bomb];
+	_oldpos setmarkeralpha 0;
+};
 
 _bombpatrolmrk = createmarker ["bombpatrol", _newpos];
 _bombpatrolmrk setMarkerShape "ELLIPSE";
@@ -108,43 +91,46 @@ Whistle_Areamarker setMarkerBrush "Grid";
 Whistle_Areamarker setmarkercolor "ColorRed";
 Whistle_Areamarker setMarkeralpha 1;
 Whistle_centerpos = createmarker ["Centerpos", _newpos];
-[player] call WIS_fnc_createtask;
 publicvariable "Whistle_centerpos";
+
+[player] remoteExec ["BR_fnc_CreateTask", WEST, true];
+
 diag_log format ["#*# Bombrush #*# Markers made at %1, and %2", getmarkerpos _bombpatrolmrk, getmarkerpos Whistle_Areamarker];
 
-[] call fnc_Whistle_Bombs_amount;
-diag_log format ["#*# Bombrush #*# Amount of bombs is %1", Whistle_Bombs_amount];
+BR_Bombs_amount = BR_Bombs_amount - 1;
+diag_log format ["#*# Bombrush #*# Amount of bombs is %1", BR_Bombs_amount];
 
+_intervaltime = 5;
 sleep _intervaltime;
 
-if ((Whistle_Bombs_amount > 15) && (Whistle_Bombs_amount < 20) || (Whistle_Bombs_amount > 20)) then {Whistle_n = 2;};
-if ((Whistle_Bombs_amount > 10) && (Whistle_Bombs_amount < 16)) then {Whistle_n = 3;};
-if ((Whistle_Bombs_amount > 5) && (Whistle_Bombs_amount < 11)) then {Whistle_n = 4;};
-if ((Whistle_Bombs_amount > 0) && (Whistle_Bombs_amount < 6)) then {Whistle_n = 5;};
+Whistle_n = paramsarray select 12;
 
-diag_log format ["#*# Bombrush #*# Amount of bombs is %1", Whistle_Bombs_amount];
+diag_log format ["#*# Bombrush #*# Amount of bombs is %1", BR_Bombs_amount];
 diag_log format ["#*# Bombrush #*# Whistle_n is %1", Whistle_n];
 
 _extraunit  = floor (random (4));
 _unitarray = ["O_Soldier_F", "O_medic_F", "O_Soldier_SL_F"];
 _extraunitarray = ["O_Soldier_AA_F", "O_soldier_M_F"];
 
-if (Whistle_Money_amount < ((ParamsArray select 10) / (random(2)))) then {
+if (BR_Money_amount < ((ParamsArray select 10) / (random(2)))) then {
 	_unitarray = _unitarray + _extraunitarray;
 	for "_x" from 1 to Whistle_n do {
-	["Bomb" , 3, _extraunit, _unitarray, "bombpatrol"] call fnc_Whistle_create_units;
+	["Bomb" , 3, _extraunit, _unitarray, "bombpatrol"] call BR_fnc_CreateUnits;
 	};
 } else {
 	for "_x" from 1 to Whistle_n do {
-	["Bomb" , 3, _extraunit, _unitarray, "bombpatrol"] call fnc_Whistle_create_units;
+	["Bomb" , 3, _extraunit, _unitarray, "bombpatrol"] call BR_fnc_CreateUnits;
 	};
 };
 
+["Plantedbomb"] remoteExec ["BR_fnc_Playsound", WEST, false];
 
-["[]","fnc_playsound", WEST, false] spawn BIS_fnc_MP;
-
-publicvariable "Whistle_Bombs_amount";
+publicvariable "BR_Bombs_amount";
 
 [alldead] spawn BIS_fnc_GC;
 
-if (alive Whistle_bomb) then {["Files\Bombrush\timer.sqf", "BIS_fnc_execVM", true, true] spawn BIS_fnc_MP;};
+if (alive Whistle_bomb) then {
+		"Files\Bombrush\timer.sqf" remoteExec ["BIS_fnc_execVM", 0, true]
+	} else {
+		diag_log format ["#*# Bombrush #*# Could not spawn bomb"];
+}

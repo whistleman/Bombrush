@@ -11,14 +11,14 @@ _params 	= _this select 3;
 _action 	= _params select 0;
 
 //
-if (_action == "fnc_Pay_Money") then {
-	[_telephone, _caller, _id] spawn fnc_Pay_Money;
+if (_action == "BR_fnc_PayMoney") then {
+	[_telephone, _caller, _id] spawn BR_fnc_PayMoney;
 	};
 
-if (_action == "fnc_call_Nikos") then {	
-	[_telephone, _caller, _id] spawn fnc_call_Nikos;
+if (_action == "BR_fnc_CallNikos") then {	
+	[_telephone, _caller, _id] spawn BR_fnc_CallNikos;
 	};
 	
-if (_action == "fnc_check_bankaccount") then {	
-	[_telephone, _caller, _id] spawn fnc_check_bankaccount;
+if (_action == "BR_fnc_CheckBankaccount") then {	
+	[_telephone, _caller, _id] spawn BR_fnc_CheckBankaccount;
 };
