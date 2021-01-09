@@ -10,4 +10,13 @@ switch (_hinttype) do {
 	case 2: {
 		cutText ["Not enough money to make the payment.","PLAIN",2];
 	};
+	case 3: {
+		cutText ["You defused the bomb and received a payment of $ 30.000 from the gouvernment.","PLAIN",2];
+	};
+	case 4: {
+		cutText ["It was a fake bomb!","PLAIN",2];
+	};
+	case 5: {
+		cutText ["A Mysterious voice says: We have planted a bomb","PLAIN",2];
+	};
 };

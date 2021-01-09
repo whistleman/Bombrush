@@ -1,10 +1,20 @@
+/*
+	fn_IntelNikos.sqf
+	Written by: Whistleman
+	For: Bombrush
+	incoming params:
+		_handling: should Nikos mark location of bomb or location of possible terrorist camp
+*/
+_handling = _this select 0;
 
 if (isServer) then {
-	//if (getMarkerColor "Intel" == "") then {} else {deletemarker "Intel"; deletemarker "intelpatrol"; };
-	if (BR_Money_amount >= 5) then {
-		BR_Money_amount = BR_Money_amount - 5;
-		publicvariable "BR_Money_amount";
-		Whistle_Nikos_money_amount = Whistle_Nikos_money_amount +5;
+
+	if (_handling) then {
+
+		if (BR_Money_amount >= 5) then {
+			BR_Money_amount = BR_Money_amount - 5;
+			publicvariable "BR_Money_amount";
+			Whistle_Nikos_money_amount = Whistle_Nikos_money_amount +5;
 			_randomizer = (random (10));
 			if (_randomizer > (Whistle_Nikos_money_amount / 5)) then {
 				_maxdistance 	= call BR_fnc_GetMaxArea;
@@ -19,7 +29,7 @@ if (isServer) then {
 				_year 	= _now select 0;
 				_hour 	= _now select 3;
 				_minute = _now select 4;
-				_intelmrk setMarkerText format ["Intel Nikos %1-%2-%3 time: %4:%5", _day, _month, _year, _hour, _minute];
+				_intelmrk setMarkerText format ["Intel Nikos on terrorist camp %1-%2-%3 time: %4:%5", _day, _month, _year, _hour, _minute];
 				"Intel" setMarkeralpha 1;
 
 				_intelpatrolmrk = createmarker ["intelpatrol", _newpos];
@@ -31,10 +41,30 @@ if (isServer) then {
 				for "_x" from 1 to _n do {
 				["intel" , 4, _n, ["O_Soldier_F", "O_medic_F", "O_Soldier_SL_F", "O_Soldier_AA_F", "O_soldier_exp_F"], "intelpatrol"] call BR_fnc_CreateUnits;
 				};
-
 			} else {
 				"camp" setMarkeralpha 1;
 			};
+		} else {
+			// When there isn't enough money show a hint
+			[2] remoteExec ["BR_fnc_ShowHint", 0, true];
 		};
 	} else {
-	player globalchat format ["We have %1 left", BR_Money_amount * 10000]};
+		// Show the bomb location
+		if (BR_Money_amount >= 2) then {
+			_bombmrk = createMarker ["_USER_DEFINED Bomb position", getpos Whistle_bomb];
+			_bombmrk setMarkerText "Possible bomb location";
+			_bombmrk setMarkerType "hd_destroy";
+			_bombmrk setmarkercolor "ColorRed";
+			_bombmrk setMarkeralpha 1;
+
+			BR_Money_amount = BR_Money_amount - 2;
+			publicvariable "BR_Money_amount";
+			Whistle_Nikos_money_amount = Whistle_Nikos_money_amount + 2;
+		} else {
+			// When there isn't enough money show a hint
+			[2] remoteExec ["BR_fnc_ShowHint", 0, true];
+		};
+	};
+} else {
+	player globalchat format ["We have %1 left", BR_Money_amount * 10000];
+};

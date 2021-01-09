@@ -23,7 +23,11 @@ if ((paramsarray select 9) == 1) then {
 	0 = [5,150,15,5,4,50,0,10,15,1] execvm "Files\Ambiance\tpw_civs.sqf";
 };
 
+// Fatigue
+_fatigue = if (paramsarray select 14 == 1) then {true} else {false};
+player enableFatigue _fatigue;
 
+// Ammoboxes for the boats sometimes bug, so this is why i did this...
 _ammoboxes = [ammobox1, ammobox2, ammobox3, ammobox4];
 _pos3 = getpos ammobox3;
 ammobox3 setpos [_pos3 select 0, _pos3 select 1, 1];

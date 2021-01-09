@@ -9,8 +9,11 @@
 if (!isServer) exitwith {};
 
 _bombspawn = createMarker ["Bombspawn", [0,0,0]];
-_bombarray = ["Land_Suitcase_F", "Land_LuggageHeap_02_F", "Land_LuggageHeap_01_F", "Land_MetalBarrel_F"];
-Whistle_bomb = (_bombarray select (random (3))) createvehicle (getmarkerpos _bombspawn);
+
+_bombarray = ["Land_Suitcase_F","Land_LuggageHeap_02_F","Land_LuggageHeap_01_F","Land_MetalBarrel_F","Land_MetalCase_01_small_F","Land_PlasticCase_01_medium_F","Land_PlasticCase_01_medium_black_F","Land_PlasticCase_01_medium_gray_F","Land_PlasticCase_01_medium_olive_F","Land_PlasticCase_01_small_F","Land_PlasticCase_01_small_black_F"];
+
+// TODO: Make sure random 3 will be random lenght array
+Whistle_bomb = (selectRandom _bombarray) createvehicle (getmarkerpos _bombspawn);
 diag_log format ["#*# Bombrush #*# Bomb is made"];
 
 //Get the position of the _bomb
@@ -43,7 +46,7 @@ diag_log format ["#*# Bombrush #*# Pos Bomb is %1", _newpos];
 _nobjs 	= nearestObjects [Whistle_bomb, ["house"], _dist];
 diag_log format ["#*# Bombrush #*# Nobjs is %1", _nobjs];
 
-
+// Put the bomb at a position inside a building. If that does not work, place it on a random position
 IF(count _nobjs == 0) then {
 	_locationPosrnd	= [((_newpos select 0) + (sin _dir) * _dist), ((_newpos select 1) + (cos _dir) * _dist), _newpos select 2];
 	_randompos 		= [_locationPosrnd, _mindist, (_dist * 2), 3, 0, 20, 0] call BIS_fnc_findSafePos;
@@ -123,7 +126,7 @@ if (BR_Money_amount < ((ParamsArray select 10) / (random(2)))) then {
 	};
 };
 
-["Plantedbomb"] remoteExec ["BR_fnc_Playsound", WEST, false];
+["PlantedBomb"] remoteExec ["BR_fnc_Playsound", WEST, false];
 
 publicvariable "BR_Bombs_amount";
 

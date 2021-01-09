@@ -86,10 +86,10 @@ WIS_fnc_addactions = {
 	_mrk	= _this select 1;
 	diag_log format ["*-* Bombrush *-* addactions pre foreach with arguments: %1 , %2", _object, _mrk];
 		
-	_object addAction ["Buy a Hummingbird € 80.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "Hummingbird € 80.000", _mrk]];
-	_object addAction ["Buy a Hunter € 30.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "Hunter € 30.000", _mrk]];
-	_object addAction ["Buy a UAV € 200.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "UAV € 200.000", _mrk]];
-	_object addAction ["Buy a Blackhawk € 300.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "Blackhawk € 300.000", _mrk]];
+	_object addAction ["Buy a Hummingbird € 80.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "Hummingbird € 80.000", _mrk],1.5, false, true, "","",5,false];
+	_object addAction ["Buy a Hunter € 30.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "Hunter € 30.000", _mrk],1.5, false, true, "","",5,false];
+	_object addAction ["Buy a UAV € 200.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "UAV € 200.000", _mrk],1.5, false, true, "","",5,false];
+	_object addAction ["Buy a Blackhawk € 300.000", "Files\Bombrush\spawnvehicle.sqf", ["WIS_fnc_Spawn", "Blackhawk € 300.000", _mrk],1.5, false, true, "","",5,false];
 
 };
 

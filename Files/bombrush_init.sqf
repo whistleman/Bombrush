@@ -18,18 +18,11 @@ player createDiaryRecord ["Diary", ["Hints", "The more enemy units you leave on 
 player createDiaryRecord ["Diary", ["Logistics", "There are three Hunters, two Hummingbirds, a UH-80 Ghost Hawk and a MQ4A Greyhawk at your disposal. Use them wisely."]];
 player createDiaryRecord ["Diary", ["Situation", "Terorrists have been hiding on Altis for quite some time now. They are planning an attack of some kind, but we do not know when are what they have planned. Just when you arrive back at base, your phone rings..."]];
 
-// call compileFinal preprocessFileLineNumbers "Files\Bombrush\functions.sqf";
-call compileFinal preprocessFileLineNumbers "Files\AI\spliffz_terroristCreator.sqf";
-
-// Pre-recuisit for Spliffz_terroristcreator
-Resistance setFriend [East, 1];
-East setFriend [Resistance, 1];
+// Add the action so a player can mark the building he was in
+player call T8_fnc_addActionsPlayer;
 
 // call vehicle serviceing script
 _cthread = [] execVM "Files\Veh.Respawn\vehicle_service.sqf";
-
-// When you die while defusing the bomb enablesimulation should be turned on again
-{_x addMPEventHandler ["MPRespawn", {_this select 0 enablesimulation true}];} foreach playableunits;
 
 // Only engineers can defuse the bomb
 if (isServer) then {
@@ -47,6 +40,12 @@ if (isServer) then {
 	};
 
 	publicvariable "WIS_array_defusers";
+
+	call compileFinal preprocessFileLineNumbers "Files\AI\spliffz_terroristCreator.sqf";
+
+	// Pre-recuisit for Spliffz_terroristcreator
+	Resistance setFriend [East, 1];
+	East setFriend [Resistance, 1];
 };
 
 // Initialize the script that creates the terrorist camp

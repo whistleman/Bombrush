@@ -36,10 +36,10 @@ if (isServer) then {
 		};	
 		
 		// add at least 10 minutes to the clock so you have enough time to go from the old place to the vehicle
-		_mintime = 600;
+		_mintime = 900;
 		// when you fly with a chopper, every minute you fly 4 km so that is why i multiplied total distance by 0.25
 		// add the amount of enemies times 1/3 as extra time to kill enemies when near the bomb
-		END_TIME = _mintime + (ceil(Whistle_totaldistance * 60 * 0.25)) + (Whistle_cnt_enemy_units * 60 * 0.33); 
+		END_TIME = _mintime + (ceil(Whistle_totaldistance * 60 * 0.5)) + (Whistle_cnt_enemy_units * 60 * 0.75); 
 		diag_log format ["*-* Bombrush *-* End_time %1", END_TIME];
 		publicvariable "END_TIME";	
 		
