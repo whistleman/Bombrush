@@ -20,11 +20,11 @@ disableai = 1;
 allowFunctionsLog = 1;
  
 author="Whistle";
-OnLoadName = "Bombrush v1.2.6";
+OnLoadName = "Bombrush";
 OnLoadMission = "Either defuse the bombs, or take out the OPFOR leader to complete this mission";
-overviewText = "Bombrush v1.2.6";
-overviewPicture = "[m000]_Bombrush.jpg";
-loadScreen = "[m000]_Bombrush.jpg";
+overviewText = "Bombrush";
+overviewPicture = "Files\Resources\Images\Bombrush.jpg";
+loadScreen = "Files\Resources\Images\Bombrush.jpg";
 
 class Params {
 	// Day and Weather script by Moerderhoschi
@@ -205,31 +205,31 @@ class CfgSounds
 	class Plantedbomb
 	{
 		name = "Plantedbomb";
-		sound[] = {Files\sounds\Plantedbomb.ogg, db + 75, 1.0};
+		sound[] = {Files\Resources\Sounds\Plantedbomb.ogg, db + 75, 1.0};
 		titles[] = {0, ""};
 	};
 	class Nikos
 	{
 		name = "Nikos";
-		sound[] = {Files\sounds\Nikos.ogg, db + 60, 1.0};
+		sound[] = {Files\Resources\Sounds\Nikos.ogg, db + 60, 1.0};
 		titles[] = {0, ""};
 	};
 	class Paymoney
 	{
 		name = "Paymoney";
-		sound[] = {Files\sounds\ThanksForTheMoney.ogg, db + 60, 1.0};
+		sound[] = {Files\Resources\Sounds\ThanksForTheMoney.ogg, db + 60, 1.0};
 		titles[] = {0, ""};
 	};
 	class DefusedBomb
 	{
 		name = "DefusedBomb";
-		sound[] = {Files\sounds\DefusedBomb.ogg, db + 60, 1.0};
+		sound[] = {Files\Resources\Sounds\DefusedBomb.ogg, db + 60, 1.0};
 		titles[] = {0, ""};
 	};
 	class FakeBomb
 	{
 		name = "FakeBomb";
-		sound[] = {Files\sounds\FakeBomb.ogg, db + 60, 1.0};
+		sound[] = {Files\Resources\Sounds\FakeBomb.ogg, db + 60, 1.0};
 		titles[] = {0, ""};
 	};
 };
@@ -298,6 +298,7 @@ class cfgFunctions
 			class inString {};
 		};
 	};
+	#include "Files\AIS\cfgFunctions.hpp"
 };
 
 class RscTitles
@@ -356,8 +357,10 @@ class RscTitles
 			sizeEx = 0.05;
 			colorBackground[] = {};
 			colorText[] = {1,1,0,0.5};
-			text = "files\sounds\sign.paa";
+			text = "Files\Resources\Images\sign.paa";
 			};
 		};
 	};
-};#include "Files\AIS\Effects\BarDlg.hpp"
+};
+
+#include "Files\AIS\Effects\BarDlg.hpp"
