@@ -10,7 +10,7 @@ if (!isServer) exitwith {};
 
 _bombspawn = createMarker ["Bombspawn", [0,0,0]];
 
-_bombarray = ["Land_Suitcase_F","Land_LuggageHeap_02_F","Land_LuggageHeap_01_F","Land_MetalBarrel_F","Land_MetalCase_01_small_F","Land_PlasticCase_01_medium_F","Land_PlasticCase_01_medium_black_F","Land_PlasticCase_01_medium_gray_F","Land_PlasticCase_01_medium_olive_F","Land_PlasticCase_01_small_F","Land_PlasticCase_01_small_black_F"];
+_bombarray = ["Land_Suitcase_F","Land_LuggageHeap_02_F","Land_LuggageHeap_01_F"];
 
 // TODO: Make sure random 3 will be random lenght array
 Whistle_bomb = (selectRandom _bombarray) createvehicle (getmarkerpos _bombspawn);
