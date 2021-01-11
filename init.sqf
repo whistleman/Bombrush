@@ -1,11 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 //
 // init.sqf
-// Bombrush v1.2.6 by Whistle
+// Bombrush by Whistle
 //
 //////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 // Set the time of day
 //SYNTAX setDate [year, month, day, hour, minute]
@@ -34,4 +32,4 @@ ammobox3 setpos [_pos3 select 0, _pos3 select 1, 1];
 _pos4 = getpos ammobox4;
 ammobox4 setpos [_pos4 select 0, _pos4 select 1, 1];
 
-call compileFinal preprocessFileLineNumbers "Files\bombrush_init.sqf";
+call compileFinal preprocessFileLineNumbers "Files\Bombrush\bombrush_init.sqf";

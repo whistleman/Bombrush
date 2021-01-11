@@ -15,7 +15,8 @@ player createDiarySubject ["Bombrush", "Bombrush"];
 player createDiaryRecord ["Bombrush", ["Credits", "Credits to Spliffz, <br />FAROOQ, <br />EGG_EVO, <br />T-800a, <br />Tajin, <br />Kronzky, <br />Zorilya, <br />Killzone Kid, <br />D4nny (tester), <br />Spectre (tester) <br /><br />Have fun Playing bombrush!<br />Greetings, Whistle"]];
 player createDiaryRecord ["Diary", ["Hints", "A few days ago a large shipment of suitcases, bags and other luggage have been gone missing."]];
 player createDiaryRecord ["Diary", ["Hints", "The more enemy units you leave on the map, the less time you have before the next bomb goes off."]];
-player createDiaryRecord ["Diary", ["Logistics", "There are three Hunters, two Hummingbirds, a UH-80 Ghost Hawk and a MQ4A Greyhawk at your disposal. Use them wisely."]];
+player createDiaryRecord ["Diary", ["Hints", "When you respawn, your last used Arsenal loadout will be loaded for your unit. To initialize this, you need to open and load the loadout you want and then close arsenal. Your loadout will be saved. When you respawn that loadout will be loaded."]];
+player createDiaryRecord ["Diary", ["Logistics", "There are three Hunters, two minigun speedboats, two Hummingbirds, a UH-80 Ghost Hawk and a MQ4A Greyhawk at your disposal. They will be resupplied after some time when one of these vehicles gets destroyed. There is also a logistics specialist where you can buy vehicles if need be."]];
 player createDiaryRecord ["Diary", ["Situation", "Terorrists have been hiding on Altis for quite some time now. They are planning an attack of some kind, but we do not know when are what they have planned. Just when you arrive back at base, your phone rings..."]];
 
 // Add the action so a player can mark the building he was in
