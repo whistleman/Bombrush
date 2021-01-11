@@ -17,6 +17,7 @@ respawn = 3;
 respawnDelay = 15;
 enableDebugConsole = 1;//Only Admins and in SP
 disableai = 1;
+allowFunctionsLog = 1;
  
 author="Whistle";
 OnLoadName = "Bombrush v1.2.6";
@@ -138,6 +139,62 @@ class Params {
 		values[] = {0, 5, 10, 100};
 		texts[] = {"0%", "5%","10%", "Debug"};
 		default = 5;
+	};
+	class EmtpyLine3 //16
+	{
+		title = ":: Revive settings";
+		values[]={0,0};
+		texts[]={ "",""};
+		default = 0;
+	};
+	class ReviveMode // 17
+	{
+		title = "Who can revive";
+		values[]={0,1,2};
+		texts[]={"Everyone","Everyone with a first aid kit or medic kit", "Medics"};
+		default = 1;
+	}
+	class ReviveCannotDie // 18
+	{
+		title = "Always go in unconscious mode";
+		values[]={false,true};
+		texts[]={"Off","On"};
+		default = true;
+	};
+	class ReviveBleedoutTime // 19
+	{
+		title = "Bleedout time";
+		values[]={120,300,600};
+		texts[]={"Short (2 minutes)","Medium (5 minutes)", "Long (10 minutes)"};
+		default = 300;
+	};
+	class ReviveTime // 20
+	{
+		title = "Revive time";
+		values[]={10,15,25};
+		texts[]={"Short (10 seconds)","Medium (15 seconds)", "Long (25 seconds)"};
+		default = 15;
+	};
+	class ReviveFullHeal // 21
+	{
+		title = "A revive fully heals";
+		values[] = {false,true};
+		texts[] = {"Off","On"};
+		default = true;
+	};
+	class ReviveMarker // 22
+	{
+		title = "Show a unconscious marker on the map";
+		values[] = {false,true};
+		texts[] = {"Off","On"};
+		default = true;
+	};
+	class ReviveMarker3d // 23
+	{
+		title = "Show an ingame unconscious icon";
+		values[] = {false,true};
+		texts[] = {"Off","On"};
+		default = false;
 	};
 };
 
@@ -303,4 +360,4 @@ class RscTitles
 			};
 		};
 	};
-};
+};#include "Files\AIS\Effects\BarDlg.hpp"
