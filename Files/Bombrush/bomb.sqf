@@ -69,7 +69,7 @@ IF(count _nobjs == 0) then {
 
 diag_log format ["#*# Bombrush #*# Pos Bomb is after Buildpos %1", getpos Whistle_bomb];
 
-Whistle_bomb remoteExec ["T8_fnc_addActionBomb", 0, true];
+[Whistle_bomb] remoteExec ["T8_fnc_addActionBomb", 0, true];
 
 _mrk = createMarker ["Bomb", _newpos];
 _mrk setMarkerType "hd_dot";
