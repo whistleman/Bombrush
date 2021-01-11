@@ -103,7 +103,7 @@ diag_log format ["#*# Bombrush #*# Markers made at %1, and %2", getmarkerpos _bo
 BR_Bombs_amount = BR_Bombs_amount - 1;
 diag_log format ["#*# Bombrush #*# Amount of bombs is %1", BR_Bombs_amount];
 
-_intervaltime = 5;
+_intervaltime = 20;
 sleep _intervaltime;
 
 Whistle_n = paramsarray select 12;
