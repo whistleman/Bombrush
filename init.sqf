@@ -25,6 +25,12 @@ if ((paramsarray select 9) == 1) then {
 _fatigue = if (paramsarray select 14 == 1) then {true} else {false};
 player enableFatigue _fatigue;
 
+// When arsenal is closed, save the loadout of the player. When he respawns he will get that loadout again.
+[missionNamespace, "arsenalClosed", {
+	_currentLoadout = getUnitLoadout [player, true];
+	player setVariable ["current_loadout",_currentLoadout,false];
+}] call BIS_fnc_addScriptedEventHandler;
+
 // Ammoboxes for the boats sometimes bug, so this is why i did this...
 _ammoboxes = [ammobox1, ammobox2, ammobox3, ammobox4];
 _pos3 = getpos ammobox3;
