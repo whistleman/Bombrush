@@ -92,11 +92,8 @@ Whistle_Areamarker setMarkerShape "ELLIPSE";
 Whistle_Areamarker setMarkerSize [100, 100];
 Whistle_Areamarker setMarkerBrush "Grid";
 Whistle_Areamarker setmarkercolor "ColorRed";
-Whistle_Areamarker setMarkeralpha 1;
 Whistle_centerpos = createmarker ["Centerpos", _newpos];
 publicvariable "Whistle_centerpos";
-
-[player] remoteExec ["BR_fnc_CreateTask", WEST, true];
 
 diag_log format ["#*# Bombrush #*# Markers made at %1, and %2", getmarkerpos _bombpatrolmrk, getmarkerpos Whistle_Areamarker];
 
@@ -106,27 +103,25 @@ diag_log format ["#*# Bombrush #*# Amount of bombs is %1", BR_Bombs_amount];
 _intervaltime = 20;
 sleep _intervaltime;
 
-Whistle_n = paramsarray select 12;
-
-diag_log format ["#*# Bombrush #*# Amount of bombs is %1", BR_Bombs_amount];
-diag_log format ["#*# Bombrush #*# Whistle_n is %1", Whistle_n];
-
+_spawnamount = paramsarray select 12;
 _extraunit  = floor (random (4));
 _unitarray = ["O_Soldier_F", "O_medic_F", "O_Soldier_SL_F"];
 _extraunitarray = ["O_Soldier_AA_F", "O_soldier_M_F"];
 
 if (BR_Money_amount < ((ParamsArray select 10) / (random(2)))) then {
 	_unitarray = _unitarray + _extraunitarray;
-	for "_x" from 1 to Whistle_n do {
+	for "_x" from 1 to _spawnamount do {
 	["Bomb" , 3, _extraunit, _unitarray, "bombpatrol"] call BR_fnc_CreateUnits;
 	};
 } else {
-	for "_x" from 1 to Whistle_n do {
+	for "_x" from 1 to _spawnamount do {
 	["Bomb" , 3, _extraunit, _unitarray, "bombpatrol"] call BR_fnc_CreateUnits;
 	};
 };
 
+[player] remoteExec ["BR_fnc_CreateTask", WEST, true];
 ["PlantedBomb"] remoteExec ["BR_fnc_Playsound", WEST, false];
+Whistle_Areamarker setMarkeralpha 1;
 
 publicvariable "BR_Bombs_amount";
 
