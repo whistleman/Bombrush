@@ -298,6 +298,19 @@ class cfgFunctions
 			class inString {};
 		};
 	};
+	class ACE3
+	{
+		class ACE3
+		{
+			file = "Files\Bombrush\Functions\ACE3";
+			class ambientBrightness {};
+			class drawLaserpoint {};
+			class getNearUnits {};
+			class getZoom {};
+			class onDraw {};
+			class postInit {postInit = 1;};
+		};
+	};
 	#include "Files\AIS\cfgFunctions.hpp"
 };
 

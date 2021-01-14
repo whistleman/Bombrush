@@ -16,5 +16,6 @@
 * D4nny
 * Spectre
 * Killzone Kid
+* ACE for the laserpointer
 
 Thanks for all your help!
