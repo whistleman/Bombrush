@@ -18,3 +18,6 @@ _oldLoadout = player getVariable ["current_loadout", []];
 
 // put gear on new unit
 _newUnit setUnitLoadout [_oldLoadout,true];
+
+// Add the action so a player can mark the building he was in
+player call T8_fnc_addActionsPlayer;
