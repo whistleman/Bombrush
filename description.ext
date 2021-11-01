@@ -264,6 +264,9 @@ class cfgFunctions
 			class PayMoney {};
 			class Playsound {};
 			class TaskState {};
+			class CreateMoneyGUI {};
+			class UpdateMoneyGUI {};
+			class MoneyHandler {};
 		};
 	};
 	class spliffz
