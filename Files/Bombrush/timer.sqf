@@ -97,7 +97,7 @@ if!(isDedicated) then
 	};
 };
 
-if (isServer) exitwith {};
+if (isDedicated) exitwith {};
 sleep 3;
 disableSerialization;
 // get current compass heading
