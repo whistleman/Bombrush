@@ -45,6 +45,7 @@ WIS_fnc_Spawn = {
 			} else {
 				"B_Heli_Light_01_F" createvehicle (getmarkerpos _mrk);
 				[-8] call BR_fnc_MoneyHandler;
+			};
 		};
 
 	case (WIS_buyablevehicles SELECT 1) :
@@ -78,7 +79,6 @@ WIS_fnc_Spawn = {
 		};
 
 	};
-};
 };
 
 WIS_fnc_addactions = {
