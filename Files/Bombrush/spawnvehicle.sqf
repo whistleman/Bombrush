@@ -44,7 +44,7 @@ WIS_fnc_Spawn = {
 				[_caller, "Not enough funds to buy this vehicle"] remoteExec ["WIS_fnc_message", 0, true];
 			} else {
 				"B_Heli_Light_01_F" createvehicle (getmarkerpos _mrk);
-				BR_Money_amount = BR_Money_amount - 8;
+				[-8] call BR_fnc_MoneyHandler;
 		};
 
 	case (WIS_buyablevehicles SELECT 1) :
@@ -53,7 +53,7 @@ WIS_fnc_Spawn = {
 				[_caller, "Not enough funds to buy this vehicle"] remoteExec ["WIS_fnc_message", 0, true];
 			} else {
 				"B_MRAP_01_F" createvehicle (getmarkerpos _mrk);
-				BR_Money_amount = BR_Money_amount - 3;
+				[-3] call BR_fnc_MoneyHandler;
 			};
 		};
 
@@ -63,7 +63,7 @@ WIS_fnc_Spawn = {
 				[_caller, "Not enough funds to buy this vehicle"] remoteExec ["WIS_fnc_message", 0, true];
 			} else {
 				"B_UAV_02_F" createvehicle (getmarkerpos _mrk);
-				BR_Money_amount = BR_Money_amount - 20;
+				[-20] call BR_fnc_MoneyHandler;
 			};
 		};
 
@@ -73,7 +73,7 @@ WIS_fnc_Spawn = {
 				[_caller, "Not enough funds to buy this vehicle"] remoteExec ["WIS_fnc_message", 0, true];
 			} else {
 				"B_Heli_Transport_01_camo_F" createvehicle (getmarkerpos _mrk);
-				BR_Money_amount = BR_Money_amount - 30;
+				[-30] call BR_fnc_MoneyHandler;
 			};
 		};
 

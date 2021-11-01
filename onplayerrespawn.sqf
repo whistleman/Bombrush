@@ -21,3 +21,6 @@ _newUnit setUnitLoadout [_oldLoadout,true];
 
 // Add the action so a player can mark the building he was in
 player call T8_fnc_addActionsPlayer;
+
+// Add money GUI
+[] call BR_fnc_CreateMoneyGUI;

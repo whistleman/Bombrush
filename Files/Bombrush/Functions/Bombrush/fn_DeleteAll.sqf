@@ -17,7 +17,7 @@ IF (ISSERVER) THEN {
 	switch (_handling) do {
 		case 0: {
 			// If the bomb was defused succeed the task
-			BR_Money_amount = BR_Money_amount + 3; 	
+			[3] call BR_fnc_MoneyHandler;
 			["SUCCEEDED"] remoteExec ["BR_fnc_TaskState" , WEST , true];
 			["DefusedBomb"] remoteExec ["BR_fnc_Playsound", 0, true];
 		};
@@ -37,9 +37,6 @@ IF (ISSERVER) THEN {
 			["FakeBomb"] remoteExec ["BR_fnc_Playsound", 0, true];
 		};
 	};
-
-	// Update the bankaccount for all clients
-	publicvariable "BR_Money_amount";
 
 	// Stop timer
 	Whistle_INIT_TIMER = false;

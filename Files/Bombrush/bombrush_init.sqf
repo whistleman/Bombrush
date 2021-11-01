@@ -54,3 +54,6 @@ call compileFinal preprocessFileLineNumbers "Files\Bombrush\createcamps.sqf";
 
 // When JIP, make sure all variables are loaded as well
 ["BIS_id", "onPlayerConnected", "BR_fnc_InitJIP"] call BIS_fnc_addStackedEventHandler;
+
+// Add money GUI
+[] call BR_fnc_CreateMoneyGUI;

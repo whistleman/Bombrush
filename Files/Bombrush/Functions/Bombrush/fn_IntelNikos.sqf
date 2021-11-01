@@ -12,8 +12,7 @@ if (isServer) then {
 	if (_handling) then {
 
 		if (BR_Money_amount >= 5) then {
-			BR_Money_amount = BR_Money_amount - 5;
-			publicvariable "BR_Money_amount";
+			[-5] call BR_fnc_MoneyHandler;
 			Whistle_Nikos_money_amount = Whistle_Nikos_money_amount +5;
 			_randomizer = (random (10));
 			if (_randomizer > (Whistle_Nikos_money_amount / 5)) then {
@@ -57,8 +56,7 @@ if (isServer) then {
 			_bombmrk setmarkercolor "ColorRed";
 			_bombmrk setMarkeralpha 1;
 
-			BR_Money_amount = BR_Money_amount - 2;
-			publicvariable "BR_Money_amount";
+			[-2] call BR_fnc_MoneyHandler;
 			Whistle_Nikos_money_amount = Whistle_Nikos_money_amount + 2;
 		} else {
 			// When there isn't enough money show a hint

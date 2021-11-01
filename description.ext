@@ -15,6 +15,7 @@ class Header
 
 respawn = 3;
 respawnDelay = 15;
+respawnOnStart = 0;
 enableDebugConsole = 1;//Only Admins and in SP
 disableai = 1;
 allowFunctionsLog = 1;
